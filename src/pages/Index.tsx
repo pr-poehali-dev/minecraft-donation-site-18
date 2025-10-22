@@ -54,6 +54,22 @@ const Index = () => {
         'Эксклюзивные предметы',
         'Персональная поддержка'
       ]
+    },
+    {
+      id: 'antigrief',
+      name: 'АНТИГРИФ',
+      price: '2000₽',
+      color: 'blue',
+      icon: 'Shield',
+      features: [
+        'Все привилегии LEGEND',
+        'Полная защита построек',
+        'Откат гриферства',
+        'Приватные регионы',
+        'Защита от взрывов',
+        'Автоматический бан гриферов',
+        'VIP поддержка 24/7'
+      ]
     }
   ];
 
@@ -246,7 +262,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {privileges.map((privilege, index) => (
               <Card
                 key={privilege.id}
@@ -255,8 +271,10 @@ const Index = () => {
                     ? 'border-primary/50 hover-glow-green'
                     : privilege.color === 'pink'
                     ? 'border-secondary/50 hover-glow-pink'
+                    : privilege.color === 'blue'
+                    ? 'border-blue-500/50'
                     : 'border-accent/50'
-                } ${index === 1 ? 'md:scale-110' : ''}`}
+                }`}
               >
                 <CardHeader className="text-center pb-4">
                   <div
@@ -265,6 +283,8 @@ const Index = () => {
                         ? 'bg-primary/20 glow-green'
                         : privilege.color === 'pink'
                         ? 'bg-secondary/20 glow-pink'
+                        : privilege.color === 'blue'
+                        ? 'bg-blue-500/20'
                         : 'bg-accent/20'
                     }`}
                   >
@@ -276,6 +296,8 @@ const Index = () => {
                           ? 'text-primary'
                           : privilege.color === 'pink'
                           ? 'text-secondary'
+                          : privilege.color === 'blue'
+                          ? 'text-blue-400'
                           : 'text-accent'
                       }
                     />
@@ -290,6 +312,8 @@ const Index = () => {
                           ? 'text-primary'
                           : privilege.color === 'pink'
                           ? 'text-secondary'
+                          : privilege.color === 'blue'
+                          ? 'text-blue-400'
                           : 'text-accent'
                       }
                     >
@@ -309,6 +333,8 @@ const Index = () => {
                               ? 'text-primary'
                               : privilege.color === 'pink'
                               ? 'text-secondary'
+                              : privilege.color === 'blue'
+                              ? 'text-blue-400'
                               : 'text-accent'
                           }`}
                         />
@@ -324,6 +350,8 @@ const Index = () => {
                         ? 'bg-primary text-primary-foreground hover-glow-green'
                         : privilege.color === 'pink'
                         ? 'bg-secondary text-secondary-foreground hover-glow-pink'
+                        : privilege.color === 'blue'
+                        ? 'bg-blue-500 text-white hover:bg-blue-600'
                         : 'bg-accent text-accent-foreground'
                     }`}
                   >
