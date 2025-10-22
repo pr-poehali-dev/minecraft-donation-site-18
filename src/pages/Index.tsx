@@ -134,7 +134,7 @@ const Index = () => {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center glow-green">
                 <Icon name="Box" size={24} className="text-primary-foreground" />
               </div>
-              <span className="text-2xl font-bold tracking-wider">MINECRAFT</span>
+              <span className="text-2xl font-bold tracking-wider">TOPORTOP.ru</span>
             </div>
             <div className="hidden md:flex items-center gap-6">
               <button
@@ -510,7 +510,7 @@ const Index = () => {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center glow-green">
                 <Icon name="Box" size={24} className="text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">MINECRAFT SERVER</span>
+              <span className="text-xl font-bold">TOPORTOP.ru</span>
             </div>
             <div className="flex gap-6">
               <Button variant="ghost" size="icon" className="hover:text-primary">
@@ -525,7 +525,7 @@ const Index = () => {
             </div>
           </div>
           <div className="text-center mt-8 text-sm text-muted-foreground">
-            © 2024 Minecraft Server. Все права защищены.
+            © 2024 TOPORTOP.ru. Все права защищены.
           </div>
         </div>
       </footer>
