@@ -197,7 +197,7 @@ const Index = () => {
                 className="border-primary text-primary hover:bg-primary/10 text-lg px-8"
               >
                 <Icon name="Copy" size={20} className="mr-2" />
-                IP: play.server.ru
+                IP: ru.TOPORTOP.com
               </Button>
             </div>
           </div>
