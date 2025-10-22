@@ -9,6 +9,10 @@ import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedPrivilege, setSelectedPrivilege] = useState<any>(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
 
   const privileges = [
     {
@@ -345,6 +349,10 @@ const Index = () => {
                 </CardContent>
                 <CardFooter>
                   <Button
+                    onClick={() => {
+                      setSelectedPrivilege(privilege);
+                      setShowPaymentModal(true);
+                    }}
                     className={`w-full ${
                       privilege.color === 'green'
                         ? 'bg-primary text-primary-foreground hover-glow-green'
@@ -521,6 +529,83 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {showPaymentModal && selectedPrivilege && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <Card className="max-w-md w-full border-primary/50">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Покупка {selectedPrivilege.name}</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowPaymentModal(false)}
+                >
+                  <Icon name="X" size={20} />
+                </Button>
+              </CardTitle>
+              <CardDescription>
+                Стоимость: {selectedPrivilege.price}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <label className="text-sm font-medium mb-2 block">Ваш никнейм в игре</label>
+                <Input
+                  placeholder="Player123"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                  className="bg-background"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-medium mb-2 block">Email для чека</label>
+                <Input
+                  type="email"
+                  placeholder="player@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-background"
+                />
+              </div>
+              <div className="bg-muted/50 p-4 rounded-lg space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <Icon name="CreditCard" size={16} className="text-primary" />
+                  <span className="font-medium">Оплата переводом на карту</span>
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  После нажатия кнопки вы получите реквизиты карты для оплаты
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter className="flex gap-3">
+              <Button
+                variant="outline"
+                onClick={() => setShowPaymentModal(false)}
+                className="flex-1"
+              >
+                Отмена
+              </Button>
+              <Button
+                onClick={() => {
+                  if (nickname && email) {
+                    alert(`Переведите ${selectedPrivilege.price} на карту:\n\n💳 Номер карты: 2202 2063 7337 8237\n\n✉️ После оплаты отправьте скриншот чека на email: admin@toportop.com\n\nУкажите ваш ник: ${nickname}\n\nПривилегия будет выдана в течение 10 минут после проверки платежа.`);
+                    setShowPaymentModal(false);
+                    setNickname('');
+                    setEmail('');
+                  } else {
+                    alert('Заполните все поля');
+                  }
+                }}
+                className="flex-1 bg-primary text-primary-foreground hover-glow-green"
+              >
+                <Icon name="ArrowRight" size={18} className="mr-2" />
+                Получить реквизиты
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      )}
     </div>
   );
 };
